@@ -1,0 +1,250 @@
+/* Kanban Bowl — VS Code Extension */
+/* Copyright © 2026 Yannick Boog. Apache License 2.0 */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         var(--vscode-sideBar-background, var(--vscode-editor-background));
+  --fg:         var(--vscode-foreground);
+  --fg-2:       var(--vscode-descriptionForeground);
+  --fg-3:       var(--vscode-disabledForeground);
+  --border:     var(--vscode-panel-border, rgba(128,128,128,0.2));
+  --hover-bg:   var(--vscode-list-hoverBackground);
+  --accent:     var(--vscode-button-background);
+  --accent-fg:  var(--vscode-button-foreground);
+  --font-ui:    var(--vscode-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+  --font-size:  var(--vscode-font-size, 13px);
+  --r-sm: 3px;
+  --r-md: 5px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: var(--font-size);
+  line-height: 1.4;
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: none;
+  height: 100%;
+}
+
+#app { display: flex; flex-direction: column; min-height: 100%; }
+
+/* ── Header ── */
+.sb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 6px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.sb-board-name {
+  font-size: 12px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.sb-open-btn {
+  background: var(--accent);
+  color: var(--accent-fg);
+  border: none;
+  border-radius: var(--r-md);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 9px;
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+  transition: filter 0.1s ease;
+}
+.sb-open-btn:hover { filter: brightness(1.12); }
+
+/* ── Board tabs ── */
+.sb-board-tabs {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.sb-board-tabs::-webkit-scrollbar { display: none; }
+
+.sb-board-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--fg-2);
+  font-family: var(--font-ui);
+  font-size: 11px;
+  padding: 5px 10px;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.1s ease, background 0.1s ease;
+}
+.sb-board-tab:hover { color: var(--fg); background: var(--hover-bg); }
+.sb-board-tab.active { color: var(--fg); border-bottom-color: var(--accent); font-weight: 500; }
+
+/* ── Stats bar ── */
+.sb-stats {
+  padding: 4px 12px;
+  font-size: 10px;
+  color: var(--fg-3);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Columns ── */
+.sb-cols {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
+
+.sb-col {
+  border-bottom: 1px solid var(--border);
+}
+
+.sb-col-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 5px;
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.sb-col-accent {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sb-col-name {
+  font-size: 11px;
+  font-weight: 600;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sb-col-count {
+  font-size: 10px;
+  color: var(--fg-3);
+  flex-shrink: 0;
+}
+
+/* ── Cards ── */
+.sb-col-cards { padding: 3px 8px 6px; display: flex; flex-direction: column; gap: 3px; }
+
+.sb-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 7px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  background: var(--vscode-editor-background, var(--bg));
+  transition: background 0.1s ease;
+  position: relative;
+}
+.sb-card:hover { background: var(--hover-bg); }
+
+.sb-pin {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-size: 6px;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.sb-card-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.3;
+  word-break: break-word;
+  padding-right: 10px;
+}
+
+.sb-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+/* ── Priority dot ── */
+.sb-hex {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sb-pri {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sb-pri-high   { background: #ef4444; }
+.sb-pri-med    { background: #f59e0b; }
+.sb-pri-low    { background: #22c55e; }
+
+/* ── Due badge ── */
+.sb-due {
+  font-size: 9.5px;
+  font-weight: 500;
+  padding: 0 4px 1px;
+  border-radius: 3px;
+}
+.sb-due-over  { color: #ef4444; background: rgba(239,68,68,0.12); }
+.sb-due-today { color: #f59e0b; background: rgba(245,158,11,0.12); }
+.sb-due-ok    { color: #22c55e; background: rgba(34,197,94,0.12);  }
+
+/* ── Checklist badge ── */
+.sb-cl {
+  font-size: 9.5px;
+  font-weight: 500;
+  padding: 0 4px 1px;
+  border-radius: 3px;
+  color: var(--fg-3);
+  background: var(--hover-bg);
+}
+.sb-cl-done { color: #22c55e; background: rgba(34,197,94,0.12); }
+
+/* ── Empty states ── */
+.sb-col-empty {
+  font-size: 10.5px;
+  color: var(--fg-3);
+  padding: 2px 4px 4px;
+  font-style: italic;
+}
+
+.sb-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 1;
+  padding: 24px;
+  text-align: center;
+}
+.sb-empty-text { font-size: 12px; color: var(--fg-2); }

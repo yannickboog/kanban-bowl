@@ -1,0 +1,217 @@
+{
+  "name": "kanban-bowl",
+  "displayName": "Kanban Bowl",
+  "description": "A lightweight Kanban board inside VS Code",
+  "version": "1.0.0",
+  "publisher": "YannickBoog",
+  "author": {
+    "name": "Yannick Boog",
+    "url": "https://github.com/yannickboog/kanban-bowl"
+  },
+  "license": "Apache-2.0",
+  "galleryBanner": {
+    "color": "#4b0082",
+    "theme": "dark"
+  },
+  "homepage": "https://github.com/yannickboog/kanban-bowl",
+  "bugs": {
+    "url": "https://github.com/yannickboog/kanban-bowl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yannickboog/kanban-bowl"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "icon": "icon.png",
+  "categories": [
+    "Visualization"
+  ],
+  "keywords": [
+    "kanban",
+    "board",
+    "tasks",
+    "productivity"
+  ],
+  "activationEvents": [],
+  "main": "./extension.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kanban-bowl-container",
+          "title": "Kanban Bowl",
+          "icon": "media/icon-activity.svg"
+        }
+      ]
+    },
+    "views": {
+      "kanban-bowl-container": [
+        {
+          "id": "kanban-bowl.sidebar",
+          "name": "Kanban Bowl",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "kanban-bowl.open",
+        "title": "Open Kanban Board",
+        "category": "Kanban Bowl",
+        "icon": "$(layout-panel-left)"
+      },
+      {
+        "command": "kanban-bowl.export",
+        "title": "Export Data",
+        "category": "Kanban Bowl",
+        "icon": "$(export)"
+      },
+      {
+        "command": "kanban-bowl.import",
+        "title": "Import Data",
+        "category": "Kanban Bowl",
+        "icon": "$(cloud-upload)"
+      },
+      {
+        "command": "kanban-bowl.reset",
+        "title": "Reset All Data",
+        "category": "Kanban Bowl",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "kanban-bowl.findCard",
+        "title": "Find Card…",
+        "category": "Kanban Bowl",
+        "icon": "$(search)"
+      },
+      {
+        "command": "kanban-bowl.quickMenu",
+        "title": "Quick Menu",
+        "category": "Kanban Bowl"
+      },
+      {
+        "command": "kanban-bowl.about",
+        "title": "About",
+        "category": "Kanban Bowl"
+      },
+      {
+        "command": "kanban-bowl.walkthrough",
+        "title": "Getting Started",
+        "category": "Kanban Bowl",
+        "icon": "$(book)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "kanban-bowl.open",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "kanban-bowl.findCard",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "navigation"
+        },
+        {
+          "command": "kanban-bowl.export",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "2_manage@1"
+        },
+        {
+          "command": "kanban-bowl.import",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "2_manage@2"
+        },
+        {
+          "command": "kanban-bowl.walkthrough",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "2_manage@3"
+        },
+        {
+          "command": "kanban-bowl.reset",
+          "when": "view == kanban-bowl.sidebar",
+          "group": "3_danger@1"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "kanban-bowl.open",
+        "key": "ctrl+shift+k",
+        "mac": "cmd+shift+k"
+      }
+    ],
+    "configuration": {
+      "title": "Kanban Bowl",
+      "properties": {
+        "kanban-bowl.defaultColumns": {
+          "type": "array",
+          "description": "Default columns created when adding a new board.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name":  { "type": "string", "description": "Column name" },
+              "color": { "type": "string", "description": "Column color (hex)" }
+            }
+          },
+          "default": [
+            { "name": "To Do",  "color": "#3B82F6" },
+            { "name": "Doing",  "color": "#F59E0B" },
+            { "name": "Done",   "color": "#22C55E" }
+          ]
+        },
+        "kanban-bowl.workspaceBoards": {
+          "type": "boolean",
+          "default": true,
+          "description": "When enabled, each workspace/project gets its own Kanban boards."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "gettingStarted",
+        "title": "Get started with Kanban Bowl",
+        "description": "Set up your first Kanban board inside VS Code.",
+        "steps": [
+          {
+            "id": "openBoard",
+            "title": "Open your board",
+            "description": "Open the Kanban board with the keyboard shortcut or from the sidebar.\n[Open Board](command:kanban-bowl.open)",
+            "media": { "svg": "media/walkthrough-open.svg", "altText": "Open the Kanban board" },
+            "completionEvents": ["onCommand:kanban-bowl.open"]
+          },
+          {
+            "id": "addColumn",
+            "title": "Add a column",
+            "description": "Click **+ Column** in the top bar to add your first column. Columns represent stages like To Do, Doing, Done.",
+            "media": { "svg": "media/walkthrough-column.svg", "altText": "Add a column" }
+          },
+          {
+            "id": "addCard",
+            "title": "Add a card",
+            "description": "Click **+ Add card** at the bottom of any column to create your first task. Cards support markdown, tags, due dates and checklists.",
+            "media": { "svg": "media/walkthrough-card.svg", "altText": "Add a card" }
+          },
+          {
+            "id": "findCard",
+            "title": "Find cards quickly",
+            "description": "Use **Find Card…** from the Command Palette to search across all cards instantly.\n[Find Card](command:kanban-bowl.findCard)",
+            "media": { "svg": "media/walkthrough-find.svg", "altText": "Find a card" },
+            "completionEvents": ["onCommand:kanban-bowl.findCard"]
+          }
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0",
+    "typescript": "^6.0.3"
+  }
+}

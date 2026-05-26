@@ -1,0 +1,30 @@
+<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="600" height="360" fill="#1e1e1e"/>
+  <!-- Column -->
+  <rect x="80" y="20" width="200" height="320" rx="8" fill="#252526"/>
+  <!-- Hexagon accent (blue) -->
+  <polygon points="95,35.8 99.5,38.4 99.5,43.6 95,46.2 90.5,43.6 90.5,38.4" fill="#3B82F6"/>
+  <text x="180" y="44" text-anchor="middle" fill="#cccccc" font-size="12" font-weight="600">To Do</text>
+  <!-- Card 1 -->
+  <rect x="96" y="58" width="168" height="52" rx="6" fill="#2d2d30"/>
+  <text x="112" y="78" fill="#ffffff" font-size="11" font-weight="600">Fix login bug</text>
+  <!-- Footer: tag + priority -->
+  <rect x="112" y="86" width="30" height="12" rx="3" fill="#3B82F6" opacity="0.2"/>
+  <text x="127" y="95" text-anchor="middle" fill="#60a5fa" font-size="8">#bug</text>
+  <rect x="148" y="86" width="30" height="12" rx="3" fill="#ef4444" opacity="0.2"/>
+  <text x="163" y="95" text-anchor="middle" fill="#f87171" font-size="8">high</text>
+  <!-- Card 2 -->
+  <rect x="96" y="118" width="168" height="36" rx="6" fill="#2d2d30"/>
+  <text x="112" y="140" fill="#ffffff" font-size="11" font-weight="600">Write tests</text>
+  <!-- Add card button highlighted -->
+  <rect x="96" y="284" width="168" height="32" rx="6" fill="#4b0082" stroke="#ee82ee" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="180" y="304" text-anchor="middle" fill="#ee82ee" font-size="11" font-weight="600">+ Add card</text>
+  <!-- Arrow -->
+  <text x="180" y="276" text-anchor="middle" fill="#ee82ee" font-size="18">↓</text>
+  <!-- Hint text -->
+  <text x="400" y="160" text-anchor="middle" fill="#9d9d9d" font-size="12">Cards support:</text>
+  <text x="400" y="184" text-anchor="middle" fill="#cccccc" font-size="11">✦  Markdown description</text>
+  <text x="400" y="204" text-anchor="middle" fill="#cccccc" font-size="11">✦  Tags &amp; priority</text>
+  <text x="400" y="224" text-anchor="middle" fill="#cccccc" font-size="11">✦  Due dates</text>
+  <text x="400" y="244" text-anchor="middle" fill="#cccccc" font-size="11">✦  Checklists</text>
+</svg>

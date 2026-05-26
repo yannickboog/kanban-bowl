@@ -1,0 +1,15 @@
+<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="600" height="360" fill="#1e1e1e"/>
+  <!-- Bowl icon -->
+  <rect x="246" y="88" width="108" height="14" rx="7" fill="#ee82ee"/>
+  <path d="M252,102 Q250,158 300,160 Q350,158 348,102 Z" fill="#4b0082"/>
+  <rect x="264" y="108" width="18" height="24" rx="3" fill="#ee82ee" opacity="0.85"/>
+  <rect x="291" y="108" width="18" height="16" rx="3" fill="#ee82ee" opacity="0.85"/>
+  <rect x="318" y="108" width="18" height="28" rx="3" fill="#ee82ee" opacity="0.85"/>
+  <!-- Title -->
+  <text x="300" y="200" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="600">Kanban Bowl</text>
+  <text x="300" y="228" text-anchor="middle" fill="#9d9d9d" font-size="13">Open your board with the keyboard shortcut</text>
+  <!-- Shortcut pill -->
+  <rect x="214" y="250" width="172" height="36" rx="8" fill="#2d2d30" stroke="#454545" stroke-width="1"/>
+  <text x="300" y="273" text-anchor="middle" fill="#cccccc" font-size="14" font-weight="500">⌘ Shift K</text>
+</svg>

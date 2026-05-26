@@ -1,0 +1,12 @@
+.git/**
+.vscode/**
+.antigravitycli/**
+.gitignore
+*.vsix
+icon.svg
+media/icon.svg
+src/webview/**
+src/sidebar/**
+tsconfig.json
+build.mjs
+node_modules/**

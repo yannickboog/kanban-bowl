@@ -1,0 +1,21 @@
+<svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif">
+  <rect width="600" height="360" fill="#1e1e1e"/>
+  <!-- QuickPick background -->
+  <rect x="100" y="60" width="400" height="240" rx="8" fill="#252526" filter="drop-shadow(0 4px 16px rgba(0,0,0,0.5))"/>
+  <!-- Search input -->
+  <rect x="100" y="60" width="400" height="44" rx="8" fill="#3c3c3c"/>
+  <text x="130" y="87" fill="#9d9d9d" font-size="13">🔍  Fix login…</text>
+  <rect x="100" y="103" width="400" height="1" fill="#454545"/>
+  <!-- Result 1 highlighted -->
+  <rect x="100" y="104" width="400" height="44" fill="#04395e"/>
+  <text x="120" y="122" fill="#ffffff" font-size="12" font-weight="600">Fix login bug</text>
+  <text x="120" y="139" fill="#9d9d9d" font-size="11">To Do  ·  Investigate session timeout…</text>
+  <!-- Result 2 -->
+  <text x="120" y="166" fill="#cccccc" font-size="12" font-weight="600">Fix payment flow</text>
+  <text x="120" y="183" fill="#9d9d9d" font-size="11">Doing  ·  Stripe integration issue</text>
+  <!-- Result 3 -->
+  <text x="120" y="210" fill="#cccccc" font-size="12" font-weight="600">Fix dark mode</text>
+  <text x="120" y="227" fill="#9d9d9d" font-size="11">Done  ·  CSS variable overrides</text>
+  <!-- Hint -->
+  <text x="300" y="320" text-anchor="middle" fill="#6d6d6d" font-size="11">⌘P  →  "Kanban Bowl: Find Card…"</text>
+</svg>
