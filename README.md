@@ -4,6 +4,9 @@ A lightweight Kanban board inside VS Code — no account, no cloud, no tracking.
 
 Open the panel via the activity bar icon or press `Cmd+Shift+K` (Mac) / `Ctrl+Shift+K` (Windows/Linux).
 
+![Kanban Bowl screenshot 1](https://raw.githubusercontent.com/yannickboog/kanban-bowl/master/media/kanban-bowl-1.png)
+![Kanban Bowl screenshot 2](https://raw.githubusercontent.com/yannickboog/kanban-bowl/master/media/kanban-bowl-2.png)
+
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
