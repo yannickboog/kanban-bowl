@@ -51,6 +51,20 @@ npm install
 npm run build
 ```
 
+### Running in debug mode
+
+1. Open the project in VS Code
+2. Press `F5` — VS Code opens a new Extension Development Host window with the extension loaded
+3. In the new window, click the Kanban Bowl icon in the Activity Bar or press `Cmd+Shift+K`
+
+### Installing as VSIX
+
+```bash
+npm install -g @vscode/vsce
+vsce package
+code --install-extension kanban-bowl-1.0.0.vsix
+```
+
 ## License
 
 Apache License 2.0 — © 2026 Yannick Boog
