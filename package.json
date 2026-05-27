@@ -2,7 +2,7 @@
   "name": "kanban-bowl",
   "displayName": "Kanban Bowl",
   "description": "A lightweight Kanban board inside VS Code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "YannickBoog",
   "author": {
     "name": "Yannick Boog",

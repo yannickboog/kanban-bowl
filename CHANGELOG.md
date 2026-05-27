@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.1] — 2026-05-27
+
+- Add screenshots to README
+
 ## [1.0.0] — 2026-05-26
 
 ### Initial release
